@@ -23,13 +23,29 @@ function AddSmurf() {
       id: uuid()
     };
     dispatch(addSmurf(newSmurf));
+    setSmurf({
+      name: "",
+      height: 0,
+      age: 0
+    });
   };
 
   return (
     <form onSubmit={submitForm}>
-      <input type="text" name="name" onChange={handleChange} />
-      <input type="text" name="height" onChange={handleChange} />
-      <input type="text" name="age" onChange={handleChange} />
+      <input
+        type="text"
+        name="name"
+        value={smurf.name}
+        placeholder="Enter Name"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="height"
+        placeholder="Height"
+        onChange={handleChange}
+      />
+      <input type="text" name="age" placeholder="Age" onChange={handleChange} />
       <button type="submit">Add Smurf</button>
     </form>
   );

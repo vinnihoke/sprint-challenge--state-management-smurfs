@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVillage } from "../actions/";
+import { getVillage, removeSmurf } from "../actions/";
 
-function Village() {
+const Village = () => {
   const store = useSelector(state => state.asyncReducer);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getVillage());
+  }, []);
 
   return (
     <div>
@@ -16,12 +20,13 @@ function Village() {
             <p>{smurf.height}</p>
             <p>{smurf.age}</p>
             <p>{smurf.id}</p>
+            <button onClick={() => dispatch(removeSmurf(smurf.id))}>X</button>
           </div>
         );
       })}
-      <button onClick={() => dispatch(getVillage())}>Pull Smurfs</button>
+      {/* <button onClick={() => dispatch(getVillage())}>Pull Smurfs</button> */}
     </div>
   );
-}
+};
 
 export default Village;

@@ -28,6 +28,13 @@ const asyncReducer = (state = initialState, action) => {
         awaitingResponse: false,
         error: ""
       };
+    case "REMOVE_SMURF":
+      return {
+        ...state,
+        smurfs: action.payload,
+        awaitingResponse: false,
+        error: ""
+      };
     default:
       return state;
   }
